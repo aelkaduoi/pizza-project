@@ -1,0 +1,17 @@
+{# templates/lucky/number.html.twig #}
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<h1>Your lucky number is {{ number }}</h1>
+    <a href="{{ path('goede_morgen') }}">klik en ga naar route goedemorgen </a>
+    <img class="img-fluid" src="{{ asset('img/smile.jpg') }}">
+    <img class="img-fluid" src="{{ asset('img/scary-meme.png') }}">
+
+    <form method="post">
+        <input type="submit" name="button" value="klik">
+    </form>
+    {% for day in days %}
+    <h4>{{ day }}</h4>
+    {% endfor %}
+
+{% endblock %}

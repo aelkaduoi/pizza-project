@@ -1,0 +1,101 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <nav class="navbar navbar-expand-md navbar-light " style="background-color: #E8395A;">
+        <div class="container">
+            <a class="navbar-brand ms-auto" href="{{ path('home') }}"><img src="{{ asset('img/logo.png') }}" alt="Logo" width="75"></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                </ul>
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="{{ path('contact') }}"
+                           style=" font-size: 24px; text-transform: uppercase; font-weight: 700;">CONTACT</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="{{ path('login') }}"
+                           style=" font-size: 24px; text-transform: uppercase; font-weight: 700;">LOGIN</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-5">
+                    <li class="nav-item">
+                        <a class="nav-link text-uppercase fw-bold" href="#">Vegan</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-uppercase fw-bold" href="#">Vlees</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-uppercase fw-bold" href="#">Vis</a>
+                    </li>
+                </ul>
+            </div>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </div>
+    </nav>
+    <body>
+    <div class="container">
+        <div class="row justify-content-center">
+            {% for product in category.products %}
+                <div class="col-md-4 col-sm-8 ">
+                    <div class="card mb-4">
+                        <img src="/{{ product.img }}" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ product.name }}</h5>
+                            <p class="card-text">{{ product.description }}</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <p class="card-text font-weight-bold">€{{ product.price }}</p>
+                                <a href="{{ path('bestel',{id:product.id}) }}" class="btn btn-danger">Bestel nu</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+    </body>
+    <footer class="footer " style="background-color: #383838;">
+        <div class="container text-white ">
+            <div class="row ">
+                <div class="col-md-4 col-sm-12 mt-5">
+                    <h3>Contact Ons</h3>
+                    <ul class="list-unstyled">
+                        <li><i class="bi bi-map-marker"></i> 2562St, Den haag</li>
+                        <li><i class="fa fa-phone"></i> (06) 1893749283</li>
+                        <li><i class="fa fa-envelope"></i> saparoos@pizza.com</li>
+                    </ul>
+                </div>
+                <div class="col-md-4 col-sm-12 text-center mt-5">
+                    <h3>Volg Ons </h3>
+                    <div class="social ">
+                        <a href="#" class="text-light "><i class="bi bi-facebook"></i></a>
+                        <a href="#" class="text-light "><i class="bi bi-twitter"></i></a>
+                        <a href="#" class="text-light "><i class="bi bi-instagram"></i></a>
+                        <a href="#" class="text-light "><i class="bi bi-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-12 text-center mt-5">
+                    <h3>Onze Uuren </h3>
+                    <ul class="list-unstyled">
+                        <li><h4>maandag - vrijdag</h4></li>
+                        <li>11:00 - 21:00</li>
+                        <li><h4>zaterdag - zondag</h4></li>
+                        <li>12:00 - 4:00</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+{% endblock %}
